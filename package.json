@@ -2,6 +2,13 @@
   "name": "nodeschool-webapp-workshopper",
   "description": "NodeSchool Silesia Workshopper for January 2016",
   "scripts": {
+    "build": "npm-run-all -p build-server",
+    "build-server": "babel es6 -d es5",
+    "dev": "npm-run-all -p dev-server",
+    "dev-server": "nodemon -w es6 -x babel-node es6",
+    "start": "NODE_ENV=production node es5",
+    "clean": "rimraf es5 /s /q",
+    "postinstall": "npm-run-all -s clean build"
   },
   "repository": {
     "type": "git",

@@ -6,3 +6,6 @@ npm-debug.log
 
 # Dependencies
 node_modules
+
+# Generated files
+es5
