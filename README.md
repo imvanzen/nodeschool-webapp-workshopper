@@ -76,38 +76,37 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
 ## Step 3
 
 - Objaśnienie podziału struktury aplikacji
-- Objaśnienie ES6 i Babela
-- Stworzenie tasków do transpilacji ES6 -> ES5
-
-```
- \
- |-- \client
- |   |-- \components
- |    -- \services
- |-- \es6
- |    -- \services
- |-- \public
- |-- \views
-  -- \webpack
-```
-
-- `\client` - zawiera warstwę kliencką
-- `\client\components` - zawiera komponenty react'owe
-- `\client\services` - zawiera serwisy do zarządzania danymi w warstwie klienckiej
-- `\es6` - zawiera warstwę serwerową
-- `\es6\services` - zawiera serwisy do zarządzania danymi w warstwie serwerowej
-- `\public` - zawiera pliki statyczne
-- `\views` - zawiera szablony serwowane przez warstwę serwerową
-- `\webpack` - zawiera konfigurację webpacka
-
-
+  - `\client` - zawiera warstwę kliencką
+  - `\client\components` - zawiera komponenty react'owe
+  - `\client\services` - zawiera serwisy do zarządzania danymi w warstwie klienckiej
+  - `\es6` - zawiera warstwę serwerową
+  - `\es6\services` - zawiera serwisy do zarządzania danymi w warstwie serwerowej
+  - `\public` - zawiera pliki statyczne
+  - `\views` - zawiera szablony serwowane przez warstwę serwerową
+  - `\webpack` - zawiera konfigurację webpacka
 - Instalacja podstawowych zależności za pomocą `npm install`
+- Stworzenie tasków do transpilacji `ES6` -> `ES5`
+  - Dodanie katalogu `es5/` do `.gitignore`
 - Stworzenie aplikacji `express`
+  - Wrapowanie `express` w `Promise`
+  - Obsługa wersji Produkcyjnej i Deweloperskiej (Heroku)
+  - Utworzenie configa dla `express`
 
 ## Step 4
 
 - Instalacja zależności `webpack`
 - Stworzenie pliku konfiguracyjnego `webpack.config.js`
+  - Dodanie do aplikacji expressowej middleware'a'
+    ```
+      if (!IS_PROD) {
+          app.use((req, res, next) => {
+              res.header('Access-Control-Allow-Origin', '*');
+              res.header('Access-Control-Allow-Methods', 'POST,GET,PUT,DELETE');
+              res.header('Access-Control-Allow-Headers', 'Content-Type');
+              next();
+          });
+      }
+    ```
 - Stworzenie podstawowego widoku `views/index.html`
 - Stworzenie podstawowego `route`
 
