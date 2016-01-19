@@ -1,0 +1,13 @@
+logs
+npm-debug.log
+public/js/
+
+# IDE
+.idea
+
+# Dependencies
+node_modules
+public/bower_components
+
+# Compiled files
+es5/
