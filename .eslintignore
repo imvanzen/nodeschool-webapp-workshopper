@@ -1,0 +1,2 @@
+# Ignore files compiled to ES5
+es5/**/*.js
