@@ -48,3 +48,33 @@ Wybierz wersję odpowiednią dla swojego systemu operacyjnego.
 Jeśli masz wątpliwości co do wersji, poproś o pomoc jednego z mentorów.
 
 > https://nodejs.org/en/download/
+
+
+## Step 2
+
+W tym kroku omówimy strukturę katalogów na jakiej będziemy operować.
+
+Kod naszej aplikacji będzie posegregowany między katalogami w następującej hierarchii.
+Dla większej jasności, poniżej wyjaśniamy ich znaczenie.
+
+```
+  \
+  |-- \client
+  |   |-- \components
+  |    -- \services
+  |-- \es6
+  |    -- \services
+  |-- \public
+  |-- \views
+   -- \webpack
+```
+
+- `\client` - zawiera warstwę kliencką
+- `\client\components` - zawiera komponenty react'owe
+- `\client\services` - zawiera serwisy do zarządzania danymi w warstwie klienckiej
+- `\es6` - zawiera warstwę serwerową
+- `\es6\services` - zawiera serwisy do zarządzania danymi w warstwie serwerowej
+- `\public` - zawiera pliki statyczne
+- `\views` - zawiera szablony serwowane przez warstwę serwerową
+- `\webpack` - zawiera konfigurację webpacka
+
