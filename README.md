@@ -26,6 +26,20 @@ Przez cały czas będziemy Was asystować, a w przypadku problemów służymy po
 Zatem - **Do dzieła!** :)
 
 
+## Spis tasków
+
+1. [Step 1](#step-1)
+2. [Step 2](#step-2)
+3. [Step 3](#step-3)
+4. [Step 4](#step-4)
+5. [Step 5](#step-5)
+6. [Step 6](#step-6)
+7. [Step 7](#step-7)
+8. [Step 8](#step-8)
+9. [Step 9](#step-9)
+10. [Step 10](#step-10)
+
+
 ## Step 1
 
 W tym kroku skupimy się na konfiguracji środowiska.
@@ -57,13 +71,13 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
 ## Step 2
 
 - Sklonowanie repozytorium
-- Objaśnienie jak używać`branch`
+- Objaśnienie jak używać `branch`
 
 ## Step 3
 
-- Instalacja podstawowych zależności za pomocą `npm install`
 - Objaśnienie podziału struktury aplikacji
 - Objaśnienie ES6 i Babela
+- Stworzenie tasków do transpilacji ES6 -> ES5
 
 ```
  \
@@ -85,6 +99,10 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
 - `\public` - zawiera pliki statyczne
 - `\views` - zawiera szablony serwowane przez warstwę serwerową
 - `\webpack` - zawiera konfigurację webpacka
+
+
+- Instalacja podstawowych zależności za pomocą `npm install`
+- Stworzenie aplikacji `express`
 
 ## Step 4
 
