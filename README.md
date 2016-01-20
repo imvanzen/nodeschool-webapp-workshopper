@@ -127,13 +127,14 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
   - `$ npm i react@~0.14.3 react-dom@~0.14.3 react-bootstrap@~0.28.1 --save`
   - `$ npm i react-hot-loader@~1.3.0 --save-dev`
 - Modyfikacja `webpack/webpack.config.js`
-  - Dodanie `react-hot` do loaderów
+  - Dodanie `react-hot` do loaderów i wstawienie warunku dot. produkcji
     `      loaders: IS_PROD ? ['babel'] : ['react-hot', 'babel'],`
 - Stworzenie podstawowego komponentu react w `client/index.js`
-- Instalacja zależności `bower`
+- Instalacja zależności `$ npm install bower --save`
   - Stworzenie `.bowerrc`
   - Stworzenie `bower.json`
   - Modyfikacja tasków w celu uruchomienia instalacji bowera po budowaniu
+    - Dodanie `bower install` do tasków budujących clienta
   - Dodanie do `views/index.html` styli z `bootstrap`
     `<link href="/public/bower_components/bootstrap/dist/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">`
 - Stworzenie komponentu `client/components/WeatherInfo.js` i ostylowanie go używając `react-bootstrap`

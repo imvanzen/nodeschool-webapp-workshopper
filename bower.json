@@ -1,0 +1,15 @@
+{
+  "name": "nodeschool-webapp-workshopper",
+  "description": "NodeSchool Silesia Workshopper for January 2016",
+  "main": "",
+  "authors": [
+    "@imvanzen"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/imvanzen/nodeschool-webapp-workshopper",
+  "moduleType": [],
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
