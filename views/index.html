@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WeatherInfo - NodeSchool Silesia Workshopper for January 2016</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <style type="text/css">
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="WeatherInfoApp"></div>
+
+{% if process.env.NODE_ENV === 'production' %}
+<script src="/public/bundle.js"></script>
+{% else %}
+<script src="http://127.0.0.1:3000/public/bundle.js"></script>
+{% endif %}
+</body>
+</html>

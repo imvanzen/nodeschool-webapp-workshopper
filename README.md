@@ -91,12 +91,22 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
   - Wrapowanie `express` w `Promise`
   - Obsługa wersji Produkcyjnej i Deweloperskiej (Heroku)
   - Utworzenie configa dla `express`
+- Stworzenie podstawowego widoku `views/index.html`
+- Stworzenie podstawowego `route`
+  - Stworzenie pliku `es6/routes.js` i zadeklarowanie route'a
+  - Załączenie pliku `es6/routes.js` do `do es6/index.js` i wstrzyknięcie routingu do expressa
 
 ## Step 4
 
-- Instalacja zależności `webpack`
-- Stworzenie pliku konfiguracyjnego `webpack.config.js`
-  - Dodanie do aplikacji expressowej middleware'a'
+- Instalacja zależności `webpack`, `webpack-dev-server`, `babel-loader`
+  - `$ npm install webpack --save`
+  - `$ npm install babel-loader webpack-dev-server --save-dev`
+- Konfiguracja `webpack`
+  - Stworzenie katalogu `webpack/`
+  - Stworzenie pliku serwera `webpack/index.js` (Port musi być inny niż serwera `Expressa`!)
+  - Stworzenie pliku konfiguracyjnego `webpack.config.js`
+  - Stworzenie katalogu `public/` oraz `client/`
+  - Dodanie do pliku serwera `Expressa` poniższego middleware'a' (reason? CORS)
     ```
       if (!IS_PROD) {
           app.use((req, res, next) => {
@@ -107,14 +117,14 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
           });
       }
     ```
-- Stworzenie podstawowego widoku `views/index.html`
-- Stworzenie podstawowego `route`
 
 ## Step 5
 
 - Instalacja zależności `react`, `react-dom`, `bootstrap-react`
 - Stworzenie podstawowego komponentu `index.js`
 - Instalacja zależności `bower`
+  - Dodanie do `views/index.html` styli z `bootstrap`
+    `<link href="/public/bower_components/bootstrap/dist/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">`
 - Stworzenie komponentu `WeatherInfo`
 
 ## Step 6
