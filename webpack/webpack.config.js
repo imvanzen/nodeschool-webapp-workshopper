@@ -36,7 +36,7 @@ module.exports = {
   entry,
   output: {
     filename: 'bundle.js',
-    path: IS_PROD ? __dirname + `/../../public` : `/public`,
+    path: IS_PROD ? __dirname + `/../public` : `/public`,
     publicPath: IS_PROD ? '/public/' : `http://${HOST}:${PORT}/public/`
   },
   resolve: {
