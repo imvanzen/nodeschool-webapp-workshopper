@@ -5,9 +5,9 @@ import Promise from 'bluebird';
 import swig from 'swig';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import setupRoutes from './routes';
 
 import {HOST, PORT, IS_PROD} from './config';
+import setupRoutes from './routes';
 
 const ENV = IS_PROD ? 'PRODUCTION' : 'DEVELOPMENT';
 

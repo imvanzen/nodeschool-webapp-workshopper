@@ -175,8 +175,23 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
 ## Step 8
 
 - Stworzenie `routes` dla Serwera
-- Stworzenie serwisu `CitiesService` dla Serwera
+  - `GET /cities`
+  - `GET /cities/:cityName`
+  - `POST /cities {cityName}`
+  - `PUT /cities/:cityId`
+  - `DELETE /cities/:cityId`
+- Instalacja zależności
+  - `$ npm install request-promise@1.0.2`
 - Stworzenie wrappera na `WeatherAPI`
+  - API dostarcza wiele opcji, ale nas interesuje wyłącznie pobieranie aktualnej pogody.
+    W pliku konfiguracyjnym znajdują się enumy które określają "lokalizację" i systemy miar w jakich odczyty mają być zwracane
+  - [Dokumentacja](http://openweathermap.org/current)
+- Stworzenie serwisu `CitiesService` dla Serwera
+  - Service powinien zapewnić
+    - wyszukiwanie w API pogody dla nazwy miasta
+    - dodawanie miasta
+    - usuwanie miasta
+    - update odczytów dla miasta
 
 ## Step 9
 
