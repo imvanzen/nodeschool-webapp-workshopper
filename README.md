@@ -106,6 +106,8 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
   - Stworzenie pliku serwera `webpack/index.js` (Port musi być inny niż serwera `Expressa`!)
   - Stworzenie pliku konfiguracyjnego `webpack.config.js`
   - Stworzenie katalogu `public/` oraz `client/`
+    - Stworzenie pustego pliku `client/index.js`
+    - Stworzenie pustego pliku `public/.gitkeep`
   - Dodanie do pliku serwera `Expressa` poniższego middleware'a' (reason? CORS)
     ```
       if (!IS_PROD) {
@@ -117,6 +119,7 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
           });
       }
     ```
+- Modyfikacja tasków w celu uruchomienia webpacka
 
 ## Step 5
 
