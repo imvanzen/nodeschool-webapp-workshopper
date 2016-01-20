@@ -1,5 +1,6 @@
 logs
 npm-debug.log
+public/js/
 
 # IDE
 .idea
@@ -7,5 +8,5 @@ npm-debug.log
 # Dependencies
 node_modules
 
-# Generated files
+# Compiled files
 es5

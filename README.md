@@ -98,9 +98,9 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
 
 ## Step 4
 
-- Instalacja zależności `webpack`, `webpack-dev-server`, `babel-loader`
-  - `$ npm install webpack --save`
-  - `$ npm install babel-loader webpack-dev-server --save-dev`
+- Instalacja zależności
+  - `$ npm install webpack@~1.12.9 --save`
+  - `$ npm install babel-loader@~5.4.0 node-sass@~3.4.2 sass-loader@~3.1.2 style-loader@~0.13.0 webpack-dev-server@~1.14.0 --save-dev`
 - Konfiguracja `webpack`
   - Stworzenie katalogu `webpack/`
   - Stworzenie pliku serwera `webpack/index.js` (Port musi być inny niż serwera `Expressa`!)
@@ -123,12 +123,20 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
 
 ## Step 5
 
-- Instalacja zależności `react`, `react-dom`, `bootstrap-react`
-- Stworzenie podstawowego komponentu `index.js`
+- Instalacja zależności
+  - `$ npm i react@~0.14.3 react-dom@~0.14.3 react-bootstrap@~0.28.1 --save`
+  - `$ npm i react-hot-loader@~1.3.0 --save-dev`
+- Modyfikacja `webpack/webpack.config.js`
+  - Dodanie `react-hot` do loaderów
+    `      loaders: IS_PROD ? ['babel'] : ['react-hot', 'babel'],`
+- Stworzenie podstawowego komponentu react w `client/index.js`
 - Instalacja zależności `bower`
+  - Stworzenie `.bowerrc`
+  - Stworzenie `bower.json`
+  - Modyfikacja tasków w celu uruchomienia instalacji bowera po budowaniu
   - Dodanie do `views/index.html` styli z `bootstrap`
     `<link href="/public/bower_components/bootstrap/dist/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">`
-- Stworzenie komponentu `WeatherInfo`
+- Stworzenie komponentu `client/components/WeatherInfo.js` i ostylowanie go używając `react-bootstrap`
 
 ## Step 6
 
