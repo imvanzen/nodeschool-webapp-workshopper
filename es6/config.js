@@ -8,6 +8,11 @@ let {
 
 const IS_PROD = NODE_ENV === 'production';
 
+const DATABASE = {
+  DB_URL: 'https://boiling-fire-134.firebaseio.com',
+  USERNAME
+};
+
 const UNITS = {
   STANDARD: 'standard',
   METRIC: 'metric',
@@ -27,6 +32,7 @@ const WEATHER_API = {
 };
 
 export default {
+  DATABASE,
   HOST,
   IS_PROD,
   PORT,

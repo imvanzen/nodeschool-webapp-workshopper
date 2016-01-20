@@ -1,13 +1,15 @@
 'use strict';
 
 import Promise from 'bluebird';
+import Firebase from 'firebase';
 
 import WeatherApi from './WeatherApi';
+import CitiesDao from './CitiesDao';
 
 class CitiesService {
 
   getCities() {
-    return [{1, "Katowice", weatherInfo: {main: {pressure: 1000, temp: 23}, wind: {speed: 2}}}];
+    return CitiesDao.getCitiesList();
   }
 
   getCityByName(cityName) {
@@ -15,15 +17,30 @@ class CitiesService {
   }
 
   addCity(cityName) {
-    return Promise.resolve({cityId, "Katowice", weatherInfo: {main: {pressure: 1000, temp: 23}, wind: {speed: 2}}})
+    return this.getCityByName(cityName)
+      .then(({cod, name: cityName, ...weatherInfo}) => {
+        return CitiesDao.addCity(cityName, weatherInfo)
+          .then(cityId => {
+            return {cityId, cityName, weatherInfo};
+          });
+      });
   }
 
   removeCity(cityId) {
-    return Promise.resolve(true);
+    return CitiesDao.removeCity(cityId);
   }
 
   updateCity(cityId) {
-    return Promise.resolve({cityId, "Katowice", weatherInfo: {main: {pressure: 1000, temp: 23}, wind: {speed: 2}}})
+    return CitiesDao.getCityById(cityId)
+      .then(({cityName}) => {
+        return WeatherApi.getWeather(cityName)
+          .then(({cod, name: cityName, ...weatherInfo}) => {
+            return CitiesDao.updateCity(cityId, cityName, weatherInfo)
+              .then(() => {
+                return {cityId, cityName, weatherInfo};
+              });
+          });
+      });
   }
 }
 
