@@ -6,6 +6,8 @@ import {
   ListGroupItem
 } from 'react-bootstrap';
 
+import cityService from '../services/CitiesService';
+
 class CitiesList extends React.Component {
 
   constructor(props) {
@@ -13,11 +15,11 @@ class CitiesList extends React.Component {
   }
 
   updateCityHandler(cityId) {
-    console.log(cityId);
+    return cityService.updateCity(cityId);
   }
 
   removeCityHandler(cityId) {
-    console.log(cityId);
+    return cityService.removeCity(cityId);
   }
 
   cityWeatherMetric(cityId, {main: {pressure, temp}, wind: {speed}}) {

@@ -161,8 +161,16 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
 - Instalacja zależności
   - `$ npm install lodash --save`
   - `$ npm install axios --save-dev`
-- Stworzenie serwisu `client/services/CitiesService.js`
+- Stworzenie serwisu `client/services/CitiesService.js`. Zarządza on
+  - Komunikatami
+  - Listą miast
+  - Wynikiem wyszukiwania
 - Stworzenie `api` dla Clienta
+  - `GET /cities`
+  - `GET /cities/:cityName`
+  - `POST /cities {cityName}`
+  - `PUT /cities/:cityId`
+  - `DELETE /cities/:cityId`
 
 ## Step 8
 

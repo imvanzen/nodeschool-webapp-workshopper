@@ -6,6 +6,7 @@ import {
   ListGroupItem
 } from 'react-bootstrap';
 
+import cityService from '../services/CitiesService';
 
 class AddCityForm extends React.Component {
 
@@ -14,8 +15,26 @@ class AddCityForm extends React.Component {
 
     this.state = {
       isLoading: false,
-      searchedCityName: null
+      searchedCityName: null,
+      searchResult: cityService.searchResult
     };
+
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange() {
+    this.setState({
+      searchResult: cityService.searchResult,
+      isLoading: false
+    });
+  }
+
+  componentWillMount() {
+    cityService.subscribe(this.onChange);
+  }
+
+  componentWillUnmount() {
+    cityService.unsubscribe(this.onChange);
   }
 
   handleChange(event) {
@@ -25,10 +44,13 @@ class AddCityForm extends React.Component {
       searchedCityName,
       isLoading: true
     });
+
+    cityService.getCityByName(searchedCityName);
   }
 
   handleClick(selectedCityName) {
-    console.log(selectedCityName);
+    this.setState({isLoading: true});
+    cityService.addCity(selectedCityName);
   }
 
   render() {
