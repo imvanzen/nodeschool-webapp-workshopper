@@ -70,8 +70,13 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
 
 ## Step 2
 
-- Sklonowanie repozytorium
+- **Sklonowanie repozytorium**
+  - Wybierz katalog w którym chcesz przechowywać źródła.
+  - Otwórz konsolę w tym katalogu i wykonaj komendę
+    ```$ git clone https://github.com/imvanzen/nodeschool-webapp-workshopper.git ./```
+  - Git powinien pobrać źródła do wybranego przez Ciebie katalogu
 - Objaśnienie jak używać `branch`
+  - `// Todo @p-janik?`
 
 ## Step 3
 
@@ -84,21 +89,41 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
   - `\public` - zawiera pliki statyczne
   - `\views` - zawiera szablony serwowane przez warstwę serwerową
   - `\webpack` - zawiera konfigurację webpacka
-- Instalacja podstawowych zależności za pomocą `npm install`
+- Instalacja podstawowych zależności
+  - Po zainstalowaniu `node'a` mamy dostęp do managera pakietów `npm`.
+    Manager pakietów pozwala na dodawanie do naszej aplikacji kodu, stworzonego przez różnych użytkowników, udostępnionego na repozytorium [npmjs.com](https://www.npmjs.com/)
+  - Aby zainstalować pakiety, w katalogu głównym aplikacji wykonaj następującą komendę
+    ```$ npm install```
 - Stworzenie tasków do transpilacji `ES6` -> `ES5`
+  - Celem jest stworzenie tasków w `package.json` do transpilacji kodu w standardzie `ES6` do `ES5`
+    Katalogiem źródłowym jest `es6/`, a docelowym `es5/`
+    ```
+      "scripts": {
+        "build-server": "babel es6 -d es5",
+      }
+    ```
   - Dodanie katalogu `es5/` do `.gitignore`
 - Stworzenie aplikacji `express`
   - Wrapowanie `express` w `Promise`
-  - Obsługa wersji Produkcyjnej i Deweloperskiej (Heroku)
+    ```
+      const app = Promise.promisifyAll(express());
+    ```
+  - Obsługa wersji Produkcyjnej i Deweloperskiej
   - Utworzenie configa dla `express`
 - Stworzenie podstawowego widoku `views/index.html`
+  Utwórz w wewnątrz pustego `div'a` z identyfikatorem `#WeatherInfoApp`
 - Stworzenie podstawowego `route`
   - Stworzenie pliku `es6/routes.js` i zadeklarowanie route'a
+    ```
+      app.get('/', (req, res) => res.render('index'))
+    ```
   - Załączenie pliku `es6/routes.js` do `do es6/index.js` i wstrzyknięcie routingu do expressa
+    Mając zmienną `app` zawierającą instancję expressa, postaraj się przekazać ją do `routes`
 
 ## Step 4
 
 - Instalacja zależności
+  W tym kroku będziemy potrzebowali następujących zależności
   - `$ npm install webpack@~1.12.9 --save`
   - `$ npm install babel-loader@~5.4.0 node-sass@~3.4.2 sass-loader@~3.1.2 style-loader@~0.13.0 webpack-dev-server@~1.14.0 --save-dev`
 - Konfiguracja `webpack`
@@ -106,9 +131,11 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
   - Stworzenie pliku serwera `webpack/index.js` (Port musi być inny niż serwera `Expressa`!)
   - Stworzenie pliku konfiguracyjnego `webpack.config.js`
   - Stworzenie katalogu `public/` oraz `client/`
-    - Stworzenie pustego pliku `client/index.js`
-    - Stworzenie pustego pliku `public/.gitkeep`
-  - Dodanie do pliku serwera `Expressa` poniższego middleware'a' (reason? CORS)
+    - Stworzenie pustego pliku `client/index.js` (tymczasowo, aby build webpacka nie wysypał się)
+    - Stworzenie pustego pliku `public/.gitkeep` (`public` nie zawsze musi zawierać pliki statyczne, ale mogą być do niego instalowane np. przy pomocy `bower`)
+  - Dodanie do `Expressa` poniższego middleware'a
+    Czasami mogą wystąpić problemy przy `hot-reloadzie` z powodu `CORS`. 
+    Dodaj poniższy middle ware do `es6/index.js` aby temu zapobiec 
     ```
       if (!IS_PROD) {
           app.use((req, res, next) => {
@@ -120,19 +147,39 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
       }
     ```
 - Modyfikacja tasków w celu uruchomienia webpacka
+  ```
+    "scripts": {
+      ...
+      "dev-client": "babel-node webpack",
+      "build-client": "NODE_ENV=production webpack -p --config webpack/webpack.config.js",
+      ...
+    }
+  ```
 
 ## Step 5
 
 - Instalacja zależności
+  W tym kroku zajmiemy się `Reactem`
   - `$ npm i react@~0.14.3 react-dom@~0.14.3 react-bootstrap@~0.28.1 --save`
   - `$ npm i react-hot-loader@~1.3.0 --save-dev`
 - Modyfikacja `webpack/webpack.config.js`
   - Dodanie `react-hot` do loaderów i wstawienie warunku dot. produkcji
     `      loaders: IS_PROD ? ['babel'] : ['react-hot', 'babel'],`
-- Stworzenie podstawowego komponentu react w `client/index.js`
+- Stworzenie podstawowego komponentu `react` w `client/index.js`
 - Instalacja zależności `$ npm install bower --save`
   - Stworzenie `.bowerrc`
+    ```
+      {
+        "directory": "public/bower_components/", // ścieżka instalacji zależności
+        "interactive": false // Wyłączenie zapytania o udzielanie danych statystycznych
+      }
+    ```
   - Stworzenie `bower.json`
+    Można to zrobić przez Creator
+    ```
+      $ bower init
+    ```
+    Po przejściu przez Creator, dodajemy zależność - `bower install bootstrap@^3.0.0 --save` 
   - Modyfikacja tasków w celu uruchomienia instalacji bowera po budowaniu
     - Dodanie `bower install` do tasków budujących clienta
   - Dodanie do `views/index.html` styli z `bootstrap`
@@ -146,6 +193,7 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
   - Komponent zawiera stany
     - `isLoading`
     - `searchedCityName`
+    - `searchedResult`
   - Komponent zawiera handlery
     - `onChange`
     - `onClick`
@@ -175,8 +223,23 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
 ## Step 8
 
 - Stworzenie `routes` dla Serwera
-- Stworzenie serwisu `CitiesService` dla Serwera
+  - `GET /cities`
+  - `GET /cities/:cityName`
+  - `POST /cities {cityName}`
+  - `PUT /cities/:cityId`
+  - `DELETE /cities/:cityId`
+- Instalacja zależności
+  - `$ npm install request-promise@1.0.2`
 - Stworzenie wrappera na `WeatherAPI`
+  - API dostarcza wiele opcji, ale nas interesuje wyłącznie pobieranie aktualnej pogody.
+    W pliku konfiguracyjnym znajdują się enumy które określają "lokalizację" i systemy miar w jakich odczyty mają być zwracane
+  - [Dokumentacja](http://openweathermap.org/current)
+- Stworzenie serwisu `CitiesService` dla Serwera
+  - Service powinien zapewnić
+    - wyszukiwanie w API pogody dla nazwy miasta
+    - dodawanie miasta
+    - usuwanie miasta
+    - update odczytów dla miasta
 
 ## Step 9
 
