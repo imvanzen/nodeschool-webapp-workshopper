@@ -18,6 +18,7 @@ app.set('view engine', 'html');
 app.set('views', `${__dirname}/../views`);
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use('/public', express.static(`${__dirname}/../public`));
 
 setupRoutes(app);
 
