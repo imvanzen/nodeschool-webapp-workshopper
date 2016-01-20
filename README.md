@@ -141,26 +141,39 @@ Node.js dostarcza managera pakietów `npm`. Służy do pobierania zależności p
 
 ## Step 6
 
-- Stworzenie komponentu `AddCity`
-- Stworzenie komponentu `CitiesList`
-- Stworzenie serwisu `CitiesService` dla Clienta
 - Omówienie działania natywnego modułu node'a - `EventEmitter`
+- Stworzenie komponentu `client/components/AddCityForm.js`
+  - Komponent zawiera stany
+    - `isLoading`
+    - `searchedCityName`
+  - Komponent zawiera handlery
+    - `onChange`
+    - `onClick`
+- Stworzenie komponentu `client/components/CitiesList.js`
+  - Komponent pobiera listę miast przekazaną przez propercje
+    - `citiesList`
+  - Komponent zawiera handlery
+    - `removeCityHandler`
+    - `updateCityHandler`
 
 ## Step 7
 
-- Instalacja zależności `axios`
+- Instalacja zależności
+  - `$ npm install lodash --save`
+  - `$ npm install axios --save-dev`
+- Stworzenie serwisu `client/services/CitiesService.js`
 - Stworzenie `api` dla Clienta
-- Instalacja zależności `bluebird`
-- Stworzenie `routes` dla Serwera
 
 ## Step 8
 
+- Stworzenie `routes` dla Serwera
 - Stworzenie serwisu `CitiesService` dla Serwera
 - Stworzenie wrappera na `WeatherAPI`
 
 ## Step 9
 
-- Instalacja zależności `firebase`, `fireproof`
+- Instalacja zależności
+  - `$ npm install firebase@~2.3.2 fireproof@~3.1.0 --save`
 - Stworzenie serwisu `CitiesDao`
 
 ## Step 10
